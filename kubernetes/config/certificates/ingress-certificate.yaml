@@ -1,0 +1,17 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: ingress-certificate
+spec:
+  secretName: ssl-certificates
+  dnsNames:
+  - django.domain
+  acme:
+    config:
+    - http01:
+        ingress: django-ingress
+      domains:
+      - django.domain
+  issuerRef:
+    name: letsencrypt-clusterissuer
+    kind: ClusterIssuer

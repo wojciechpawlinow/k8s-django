@@ -1,0 +1,15 @@
+apiVersion: v1
+data:
+  CELERY_BROKER_URL: pyamqp://django:secret123@rabbitmq-service:5672//
+  DJANGO_SETTINGS_MODULE: django.settings.prod
+  POSTGRES_DB: django
+  POSTGRES_HOST: 127.0.0.1
+  POSTGRES_PORT: "5432"
+  RABBITMQ_DEFAULT_USER: django
+  RABBITMQ_DEFAULT_PASS: secret123
+  RABBITMQ_HOST: rabbitmq-service:5672
+  SECRET_KEY: secret-key
+kind: ConfigMap
+metadata:
+  name: django-configmap
+  namespace: default
